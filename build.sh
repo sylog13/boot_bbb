@@ -6,7 +6,6 @@ function get_cross_tool()
     if [ ! -d crosstool-ng ]; then
         echo "crosstool-ng is not exist!!! Get new one..."
         git clone https://github.com/crosstool-ng/crosstool-ng.git
-<<<<<<< HEAD
 
         cd $TOOLCHAIN_DIR
         ./bootstrap
@@ -14,7 +13,6 @@ function get_cross_tool()
         make
         make install
     fi
-
 }
 
 function config_toolchain()
@@ -60,15 +58,4 @@ export TOOLCHAIN_DIR=$TOP_DIR/crosstool-ng
 get_cross_tool
 config_toolchain
 build_toolchain
-=======
-    fi
 
-    cd crosstool-ng
-    ./bootstrap
-    ./configure --prefix=${PWD}
-    make
-    make install
-}
-
-get_cross_tool
->>>>>>> f12d43dc9876d3f0ff30566a867881c07486076c
