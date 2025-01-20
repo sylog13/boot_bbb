@@ -99,6 +99,12 @@ RUN apt install -y libtool libtool-bin libtool-doc
 VOLUME /home/boot_bbb/kernel
 WORKDIR /home/boot_bbb/kernel
 RUN chown -R boot_bbb:boot_bbb /home/boot_bbb/kernel
+#VOLUME /home/boot_bbb
+WORKDIR /home/boot_bbb
+#RUN chown -R boot_bbb:boot_bbb /home/boot_bbb
+
+#VOLUME /home/boot_bbb/x-tools
+#RUN chown -R boot_bbb:boot_bbb /home/boot_bbb/x-tools
 
 ENV USER=boot_bbb
 USER boot_bbb
@@ -106,6 +112,11 @@ USER boot_bbb
 RUN echo "alias ll='ls -alF'" >> ~/.bashrc
 RUN echo "alias la='ls -A'" >> ~/.bashrc
 RUN echo "alias l='ls -CF'" >> ~/.bashrc
+
+RUN echo "PATH=/home/boot_bbb/kernel/x-tools/arm-cortex_a8-linux-gnueabihf/bin:\$PATH" >> ~/.bashrc
+#XTOOLS_TOOLCHAIN_PATH
+RUN echo "XTOOLS_TOOLCHAIN_PATH=/home/boot_bbb/kernel/x-tools" >> ~/.bashrc
+
 
 RUN git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 RUN sh ~/.vim_runtime/install_awesome_vimrc.sh
