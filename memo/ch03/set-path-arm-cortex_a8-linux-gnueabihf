@@ -1,0 +1,14 @@
+#!/bin/bash
+# Add a toolchain created using CrosstoolNG to your path
+# and export ARCH and CROSS_COMPILE variables ready to 
+# compile U-Boot, Linux, Busybox and anything else using
+# the Kconfig/Kbuild scripts
+
+# Chris Simmonds, chris@2net.co.uk
+
+# In my docker container, x-tools is stored in ${HOME}/kernel/x-tools
+# PATH=${HOME}/x-tools/arm-cortex_a8-linux-gnueabihf/bin/:$PATH
+PATH=${HOME}/kernel/x-tools/arm-cortex_a8-linux-gnueabihf/bin/:$PATH
+export CROSS_COMPILE=arm-cortex_a8-linux-gnueabihf-
+export ARCH=arm
+
